@@ -182,6 +182,7 @@ legend {
 }
 
 select,
+input,
 textarea,
 button {
   width: 100%;
@@ -191,13 +192,20 @@ button {
 }
 
 select,
+input,
 textarea {
   padding: 14px 16px;
   background: var(--paper-strong);
   color: var(--text);
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: #7a8175;
+}
+
 select:focus,
+input:focus,
 textarea:focus,
 button:focus {
   outline: 3px solid rgba(13, 107, 82, 0.18);

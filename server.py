@@ -20,6 +20,7 @@ META_PATH = SESSION_DIR / "session.json"
 
 FIELDNAMES = [
     "submitted_at",
+    "student_name",
     "student_branch",
     "presenting_team",
     "learned_something_new",
@@ -50,6 +51,7 @@ def ensure_storage() -> None:
 def save_submission(payload: dict) -> None:
     record = {
         "submitted_at": datetime.now().isoformat(),
+        "student_name": payload["student_name"].strip(),
         "student_branch": payload["student_branch"].strip(),
         "presenting_team": payload["presenting_team"].strip(),
         "learned_something_new": payload["learned_something_new"].strip(),
@@ -67,6 +69,7 @@ def save_submission(payload: dict) -> None:
 
 def validate_payload(payload: dict) -> tuple[bool, str]:
     required_fields = [
+        "student_name",
         "student_branch",
         "presenting_team",
         "learned_something_new",
