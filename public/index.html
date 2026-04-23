@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyVillage Zoom Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="eyebrow">MyVillage Project Inspired Survey</span>
+          <h1>STEM Class Attendance and Participation Tracker</h1>
+        </div>
+        <a class="site-link" href="https://myvillageproject.com/" target="_blank" rel="noreferrer">
+          View MyVillage
+        </a>
+      </header>
+
+      <main class="hero-grid">
+        <section class="intro-card">
+          <p class="kicker">Education is better together</p>
+          <h2>Capture live Zoom participation data for Nerd Hour and STEM sessions.</h2>
+          <p class="intro-copy">
+            This form is designed for quick end-of-call or check-in submissions. Each server run creates a
+            fresh dataset folder so your team can keep training inputs organized.
+          </p>
+
+          <div class="info-grid">
+            <article>
+              <span>Purpose</span>
+              <strong>Attendance + learning signal capture</strong>
+            </article>
+            <article>
+              <span>Storage</span>
+              <strong>CSV and JSONL for each session</strong>
+            </article>
+            <article>
+              <span>Flow</span>
+              <strong>Open link, submit, track model-ready data</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="survey-card">
+          <div class="survey-header">
+            <p class="survey-step">5 quick prompts</p>
+            <h3>Participation Survey</h3>
+            <p>Answer before leaving the call or when joining Nerd Hour.</p>
+          </div>
+
+          <form id="survey-form" class="survey-form">
+            <label>
+              <span>1. Which tech branch are you part of?</span>
+              <select name="student_branch" required>
+                <option value="">Choose one</option>
+                <option>AI/Dev team</option>
+                <option>Graphic design</option>
+                <option>Game Design</option>
+              </select>
+            </label>
+
+            <label>
+              <span>2. Which team led or presented today?</span>
+              <select name="presenting_team" required>
+                <option value="">Choose one</option>
+                <option>AI/Dev team</option>
+                <option>Graphic design</option>
+                <option>Game Design</option>
+              </select>
+            </label>
+
+            <fieldset>
+              <legend>3. Did today introduce something new for you?</legend>
+              <div class="radio-row">
+                <label class="radio-pill">
+                  <input type="radio" name="learned_something_new" value="Yes" required />
+                  <span>Yes</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="learned_something_new" value="No" required />
+                  <span>No</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              <span>4. What stood out or what did you learn?</span>
+              <textarea
+                name="new_learning_details"
+                rows="4"
+                placeholder="Share one idea, skill, concept, or takeaway from today."
+                required
+              ></textarea>
+            </label>
+
+            <label>
+              <span>5. What are you focused on today or this week?</span>
+              <textarea
+                name="current_focus"
+                rows="4"
+                placeholder="Describe your check-in, sprint goal, or what you're building."
+                required
+              ></textarea>
+            </label>
+
+            <button type="submit">Submit Survey</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
