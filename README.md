@@ -12,6 +12,12 @@ Simple survey app for STEM class attendance and participation tracking.
 ## Run locally
 
 ```bash
+HOST=127.0.0.1 python3 server.py
+```
+
+Or just:
+
+```bash
 python3 server.py
 ```
 
@@ -32,3 +38,21 @@ Inside that folder:
 - `session.json`
 
 This makes it easy to review survey data in Excel or feed the JSONL into later model workflows.
+
+## Deploy on Render
+
+This project is ready to deploy as a Render web service.
+
+Important:
+
+- Render web services must listen on `0.0.0.0`
+- Render files are ephemeral by default, so attach a persistent disk if you want survey data to survive restarts and redeploys
+- Set `DATA_DIR` to your disk mount path, such as `/opt/render/project/src/data`
+
+Suggested Render settings:
+
+- Build command: `echo "No build step needed"`
+- Start command: `python3 server.py`
+- Environment variable: `DATA_DIR=/opt/render/project/src/data`
+
+If you do not attach a disk, your CSV and JSONL files can be lost on redeploy.

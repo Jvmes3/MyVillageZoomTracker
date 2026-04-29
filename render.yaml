@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: myvillage-zoom-tracker
+    runtime: python
+    plan: starter
+    buildCommand: echo "No build step needed"
+    startCommand: python3 server.py
+    envVars:
+      - key: DATA_DIR
+        value: /opt/render/project/src/data

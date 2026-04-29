@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 
 BASE_DIR = Path(__file__).resolve().parent
 PUBLIC_DIR = BASE_DIR / "public"
-DATA_DIR = BASE_DIR / "data"
+DATA_DIR = Path(os.environ.get("DATA_DIR", str(BASE_DIR / "data")))
 
 SESSION_STAMP = datetime.now().strftime("%Y%m%d-%H%M%S")
 SESSION_DIR = DATA_DIR / f"session-{SESSION_STAMP}"
@@ -158,7 +158,7 @@ class ReusableThreadingHTTPServer(ThreadingHTTPServer):
 
 
 def run_server():
-    host = os.environ.get("HOST", "127.0.0.1")
+    host = os.environ.get("HOST", "0.0.0.0")
     port = int(os.environ.get("PORT", "8000"))
     server = ReusableThreadingHTTPServer((host, port), SurveyHandler)
     ensure_storage()
