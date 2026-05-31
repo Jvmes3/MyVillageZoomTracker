@@ -56,3 +56,12 @@ Suggested Render settings:
 - Environment variable: `DATA_DIR=/opt/render/project/src/data`
 
 If you do not attach a disk, your CSV and JSONL files can be lost on redeploy.
+
+## Deploy on Vercel
+
+This project includes Vercel serverless API handlers in `api/` for `/api/surveys` and `/api/session`.
+
+Important:
+
+- Vercel serverless file storage is temporary, so saved CSV and JSONL files may disappear between cold starts and redeploys
+- For permanent production data, connect the save endpoint to a database or another persistent storage service

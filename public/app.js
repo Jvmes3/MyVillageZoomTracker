@@ -1,6 +1,21 @@
 const form = document.querySelector("#survey-form");
 const statusMessage = document.querySelector("#form-status");
 
+async function readJsonResponse(response) {
+  const contentType = response.headers.get("content-type") || "";
+
+  if (contentType.includes("application/json")) {
+    try {
+      return await response.json();
+    } catch (error) {
+      throw new Error("The server returned invalid JSON.");
+    }
+  }
+
+  await response.text();
+  throw new Error("Unable to save your response. The server returned an unexpected response.");
+}
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -19,7 +34,7 @@ form.addEventListener("submit", async (event) => {
       body: JSON.stringify(payload),
     });
 
-    const result = await response.json();
+    const result = await readJsonResponse(response);
 
     if (!response.ok || !result.ok) {
       throw new Error(result.error || "Unable to save your response.");
